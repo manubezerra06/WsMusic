@@ -1,5 +1,7 @@
 package service;
 
+import java.util.List;
+
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
@@ -15,7 +17,15 @@ public class MusicService {
 	@Path("/{nome}")
 	@Produces(MediaType.APPLICATION_XML)
 	public Band getBands(@PathParam("nome") String nome) {
-
+		
 		return BandDb.getByName(nome);
+	}
+
+	@GET
+	@Path("/collection")
+	@Produces(MediaType.APPLICATION_XML)
+	public List<Band> getBands() {
+
+		return BandDb.getAll();
 	}
 }
